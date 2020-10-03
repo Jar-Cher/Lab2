@@ -10,13 +10,13 @@
 Я изменил дефолтный MainActivity, чтобы в консоль выводились уведомления при вызове основных методов жизненного цикла приложения:
 Как и предполагалось:
 *	При открытии приложения выводятся уведомления:
-![Иллюстрация к проекту](https://github.com/Jar-Cher/Lab2/tree/master/ReportData/1.png?raw=true)
+![Иллюстрация к проекту](ReportData/1.png)
 *	Приход сообщения, звонок и просмотр экрана уведомлений не привели ни к каким целевым уведомлениям в консоли.
 *	Выход «домой»:
-![Иллюстрация к проекту](https://github.com/Jar-Cher/Lab2/tree/master/ReportData/2.png?raw=true)
+![Иллюстрация к проекту](ReportData/2.png)
 *	При открытии приложения через список ранее запущенных:
-![Иллюстрация к проекту](https://github.com/Jar-Cher/Lab2/tree/master/ReportData/3.png?raw=true)
+![Иллюстрация к проекту](ReportData/3.png)
 *	При выключении экрана:
-![Иллюстрация к проекту](https://github.com/Jar-Cher/Lab2/tree/master/ReportData/4.png?raw=true)
+![Иллюстрация к проекту](ReportData/4.png)
 *	При включении экрана:
-![Иллюстрация к проекту](https://github.com/Jar-Cher/Lab2/tree/master/ReportData/5.png?raw=true)
+![Иллюстрация к проекту](ReportData/5.png)
