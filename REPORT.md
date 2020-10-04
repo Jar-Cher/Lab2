@@ -75,15 +75,25 @@ normal-round-xxxhdpi-qwerty-v27
 Следуя алгоритму Best-matching resource, первым делом исключаем конфигурации ресурсов, противоречащие конфигурации устройства:
 
 (default)
+
 ~~notlong-watch-wheel~~             // wheel vs nonav
+
 en
+
 ~~rFR-notlong-round-xhdpi-nokeys~~  // rFR vs rCA
+
 ~~watch~~                           // watch vs desk
+
 ~~fr-rCA-trackball-v26~~            // fr vs en
+
 ~~round-land-notouch-nonav-v25~~    // notouch vs finger
+
 ~~notlong-notnight-xhdpi-dpad-v27~~ // dpad vs nonav
+
 ~~rCA-land-notouch~~                // notouch vs finger
+
 ~~small-long-ldpi-v25~~             // long vs notlong
+
 ~~normal-round-xxxhdpi-qwerty-v27~~ // qwerty vs 12key
 
 
