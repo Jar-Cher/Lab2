@@ -32,7 +32,7 @@
 
 ## Листинги:
 ### Задание 1, MainActivity
-'''
+```
 package com.example.lab1
 
 import androidx.appcompat.app.AppCompatActivity
@@ -77,4 +77,4 @@ class MainActivity : AppCompatActivity() {
         Log.d("STOP", "Stopped!")
     }
 }
-'''
+```
