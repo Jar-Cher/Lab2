@@ -76,16 +76,16 @@ normal-round-xxxhdpi-qwerty-v27
 ```
 Конфигурация ресурсов:
 (default)
-<strike>notlong-watch-wheel</strike>             // wheel vs nonav
+~~notlong-watch-wheel~~             // wheel vs nonav
 en
-<strike>rFR-notlong-round-xhdpi-nokeys</strike>  // rFR vs rCA
-<strike>watch</strike>                           // watch vs desk
-<strike>fr-rCA-trackball-v26</strike>            // fr vs en
-<strike>round-land-notouch-nonav-v25</strike>    // notouch vs finger
-<strike>notlong-notnight-xhdpi-dpad-v27</strike> // dpad vs nonav
-<strike>rCA-land-notouch</strike>                // notouch vs finger
-<strike>small-long-ldpi-v25</strike>             // long vs notlong
-<strike>normal-round-xxxhdpi-qwerty-v27</strike> // qwerty vs 12key
+~~rFR-notlong-round-xhdpi-nokeys~~  // rFR vs rCA
+~~watch~~                           // watch vs desk
+~~fr-rCA-trackball-v26~~            // fr vs en
+~~round-land-notouch-nonav-v25~~    // notouch vs finger
+~~notlong-notnight-xhdpi-dpad-v27~~ // dpad vs nonav
+~~rCA-land-notouch~~                // notouch vs finger
+~~small-long-ldpi-v25~~             // long vs notlong
+~~normal-round-xxxhdpi-qwerty-v27~~ // qwerty vs 12key
 ```
 
 Между оставшимися двумя конфигурациями (по умолчанию и "en") выбираем "en", поскольку английский язык указан в конфигурации устройства (пункты 2-4 алгоритма из официальной документации).
