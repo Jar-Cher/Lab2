@@ -33,7 +33,10 @@
 
 ![Иллюстрация к проекту](ReportData/6.png)
 
-Предполагается, что если высота экрана составляет менее 500dp (например, при горизонтальном развороте Nexus One API 22), то будет высвечиваться сообщение "Too little space for 'Hello World!'", а иначе - "Hello World!".
+Предполагается, что если высота экрана составляет менее 500dp (например, при горизонтальном развороте Nexus One API 22), то будет высвечиваться сообщение "Too little space for 'Hello World!'", а иначе - "Hello World!":
+
+![Иллюстрация к проекту](ReportData/7.png)
+![Иллюстрация к проекту](ReportData/8.png)
 
 Следует отметить, что конфигурация "Available height" используется редко, поскольку UI приложений, как правило, можно скроллить. Однако, при нехватке места на экране можно, например, автоматичеси свертывать подразделы списков, не интересующих пользователя.
 
@@ -100,7 +103,12 @@ en
 Между оставшимися двумя конфигурациями (по умолчанию и "en") выбираем "en", поскольку английский язык указан в конфигурации устройства (пункты 2-4 алгоритма из официальной документации).
 
 ### Задание 4. Сохранение состояние Activity.
+Студент написал приложение "continuewatch". Это приложение по заданию должно считать, сколько секунд пользователь провел в этом приложении. Требуется найти ошибки в этом приложении и исправить их.
 
+Для тестирования данного приложения был создан отдельный проект.
+
+В процессе тестирования выяснилось, что приложение не сохраняет значение секундомера после закрытия приложения и поворота экрана (т.е. при каждом вызове метода onCreate() значение секундомера обнуляется). При этом, приложение продолжает считать, даже когда экран выключен или приложение не активно (после вызова методов onPause() или onStop()).
+Решить проблемы удалось сохранением значения секундомера перед выходом из приложения, используя onSaveInstanceState() и onRestoreInstanceState(). Кроме этого, пришлось задействовать флаг doCount, разрешающий/запрещающий инкрементацию счётчика в потоке, а также функции onResume() и onPause(), соответственно устанавливающая/снимающая этот флаг.
 ## Листинги:
 ### Задание 1, класс MainActivity
 ```
@@ -192,3 +200,94 @@ class MainActivity : AppCompatActivity() {
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
+
+### Задание 4, оригинальный класс MainActivity
+```
+package ru.spbstu.icc.kspt.lab2.continuewatch
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
+
+class MainActivity : AppCompatActivity() {
+    var secondsElapsed: Int = 0
+
+    var backgroundThread = Thread {
+        while (true) {
+            Thread.sleep(1000)
+            textSecondsElapsed.post {
+                textSecondsElapsed.setText("Seconds elapsed: " + secondsElapsed++)
+            }
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        backgroundThread.start()
+    }
+}
+```
+
+### Задание 4, исправленный класс MainActivity
+```
+package  com.example.lab2task4
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
+
+class MainActivity : AppCompatActivity() {
+    var secondsElapsed: Int = 0
+    var doCount: Boolean = true
+    val SECONDS = "0"
+
+    var backgroundThread = Thread {
+        while (true) {
+            Thread.sleep(1000)
+            if (doCount)
+                textSecondsElapsed.post {
+                    textSecondsElapsed.setText("Seconds elapsed: " + secondsElapsed++)
+                }
+        }
+    }
+
+    override fun onResume() {
+        doCount = true
+        super.onResume()
+    }
+
+    override fun onPause() {
+        doCount = false
+        super.onPause()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.run {
+            putInt(SECONDS, secondsElapsed)
+        }
+
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+
+        super.onRestoreInstanceState(savedInstanceState)
+
+        savedInstanceState.run {
+            secondsElapsed = getInt(SECONDS)
+        }
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        backgroundThread.start()
+    }
+    
+}
+```
+
+PS На выполнение заданий 1-3 ушло чуть меньше часа времени. Исключением является последнее задание - 1.5 часа.
