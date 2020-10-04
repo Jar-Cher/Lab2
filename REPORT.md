@@ -73,8 +73,7 @@ normal-round-xxxhdpi-qwerty-v27
 ```
 
 Следуя алгоритму Best-matching resource, первым делом исключаем конфигурации ресурсов, противоречащие конфигурации устройства:
-```
-Конфигурация ресурсов:
+
 (default)
 ~~notlong-watch-wheel~~             // wheel vs nonav
 en
@@ -86,7 +85,7 @@ en
 ~~rCA-land-notouch~~                // notouch vs finger
 ~~small-long-ldpi-v25~~             // long vs notlong
 ~~normal-round-xxxhdpi-qwerty-v27~~ // qwerty vs 12key
-```
+
 
 Между оставшимися двумя конфигурациями (по умолчанию и "en") выбираем "en", поскольку английский язык указан в конфигурации устройства (пункты 2-4 алгоритма из официальной документации).
 
