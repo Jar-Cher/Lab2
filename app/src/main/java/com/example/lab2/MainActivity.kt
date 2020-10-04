@@ -1,4 +1,4 @@
-package com.example.lab1
+package com.example.lab2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
