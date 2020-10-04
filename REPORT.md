@@ -35,8 +35,63 @@
 
 Предполагается, что если высота экрана составляет менее 500dp (например, при горизонтальном развороте Nexus One API 22), то будет высвечиваться сообщение "Too little space for 'Hello World!'", а иначе - "Hello World!".
 
-Следует отметить, что конфигурация "Available height" используется редко, поскольку UI приложений, как правило, можно скроллить.
-Однако, при нехватке места на экране можно, например, автоматичеси свертывать подразделы списков, не интересующих пользователя.
+Следует отметить, что конфигурация "Available height" используется редко, поскольку UI приложений, как правило, можно скроллить. Однако, при нехватке места на экране можно, например, автоматичеси свертывать подразделы списков, не интересующих пользователя.
+
+### Задание 3. Best-matching resource.
+```
+Вариант 19:
+====================================
+Конфигурация устройства:
+LOCALE_LANG: en
+LOCALE_REGION: rCA
+SCREEN_SIZE: large
+SCREEN_ASPECT: notlong
+ROUND_SCREEN: round
+ORIENTATION: port
+UI_MODE: desk
+NIGHT_MODE: notnight
+PIXEL_DENSITY: tvdpi
+TOUCH: finger
+PRIMARY_INPUT: 12key
+NAV_KEYS: nonav
+PLATFORM_VER: v25
+
+Конфигурация ресурсов:
+(default)
+notlong-watch-wheel
+en
+rFR-notlong-round-xhdpi-nokeys
+watch
+fr-rCA-trackball-v26
+round-land-notouch-nonav-v25
+notlong-notnight-xhdpi-dpad-v27
+rCA-land-notouch
+small-long-ldpi-v25
+normal-round-xxxhdpi-qwerty-v27
+
+====================================
+```
+
+Следуя алгоритму Best-matching resource, первым делом исключаем конфигурации ресурсов, противоречащие конфигурации устройства:
+```
+Конфигурация ресурсов:
+(default)
+~~notlong-watch-wheel~~             // wheel vs nonav
+en
+~~rFR-notlong-round-xhdpi-nokeys~~  // rFR vs rCA
+~~watch~~                           // watch vs desk
+~~fr-rCA-trackball-v26~~            // fr vs en
+~~round-land-notouch-nonav-v25~~    // notouch vs finger
+~~notlong-notnight-xhdpi-dpad-v27~~ // dpad vs nonav
+~~rCA-land-notouch~~                // notouch vs finger
+small-long-ldpi-v25                 // long vs notlong
+~~normal-round-xxxhdpi-qwerty-v27~~ // qwerty vs 12key
+```
+
+Между оставшимися двумя конфигурациями (по умолчанию и "en") выбираем "en", поскольку английский язык указан в конфигурации устройства (пункты 2-4 алгоритма из официальной документации).
+
+### Задание 4. Сохранение состояние Activity.
+
 ## Листинги:
 ### Задание 1, класс MainActivity
 ```
