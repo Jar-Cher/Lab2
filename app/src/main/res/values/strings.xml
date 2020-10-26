@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Lab2</string>
     <string name="too_little_space_for_hello_world">Too little space for \'Hello World!\'</string>
+    <color name="colorPrimary">#6200EE</color>
 </resources>
